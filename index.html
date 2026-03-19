@@ -40,10 +40,6 @@
     margin: 0 auto;
   }
 
-  .slide:nth-child(even of .slide:not(.slide-title)) {
-    background: transparent;
-  }
-
   .slide-title {
     min-height: 100vh;
     display: flex;
@@ -99,7 +95,7 @@
   }
 
   ul li::before {
-    content: "→ ";
+    content: "\2192 ";
     color: var(--red);
     font-weight: 700;
   }
@@ -216,34 +212,6 @@
     font-weight: 700;
   }
 
-  .track {
-    margin: 24px 0;
-    padding: 24px;
-    background: var(--surface);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent-light);
-    box-shadow: 0 2px 8px rgba(13,10,70,0.06);
-  }
-
-  .track h3 {
-    margin-top: 0;
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  .screenshot-placeholder {
-    background: linear-gradient(135deg, #e8eaf0 0%, #f0f2f5 100%);
-    border: 2px dashed var(--accent-light);
-    border-radius: 12px;
-    padding: 40px;
-    text-align: center;
-    color: var(--accent-light);
-    margin: 12px 0;
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
   .demo-case {
     margin: 24px 0;
     background: var(--surface);
@@ -326,12 +294,6 @@
     margin-bottom: 16px;
   }
 
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 20px 0;
-  }
-
   .risk-table td:first-child { color: var(--orange); font-weight: 500; }
 
   .nav {
@@ -363,57 +325,6 @@
     .grid-2 { grid-template-columns: 1fr; }
     .nav { display: none; }
   }
-
-  @media print {
-    @page { size: A4 landscape; margin: 10mm; }
-    body { background: #ffffff; font-size: 9pt; }
-    .nav { display: none; }
-    .slide, .slide-title {
-      min-height: auto;
-      break-after: page;
-      break-inside: avoid;
-      padding: 20px 30px;
-      max-width: none;
-    }
-    .slide:last-of-type { break-after: auto; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.4rem; margin-bottom: 16px; padding-bottom: 8px; }
-    h3 { font-size: 1rem; margin: 14px 0 8px; }
-    p, li { font-size: 0.85rem; margin-bottom: 4px; }
-    .key-point { font-size: 0.95rem; }
-    .grid-2 { gap: 12px; margin: 8px 0; }
-    .card, .scenario, .track { padding: 12px; margin: 8px 0; }
-    .card h4, .scenario h4 { font-size: 0.85rem; margin-bottom: 6px; }
-    table { font-size: 0.8rem; margin: 8px 0; }
-    th { padding: 6px 10px; }
-    td { padding: 5px 10px; }
-    .highlight { padding: 10px 14px; margin: 10px 0; }
-    .slide-title {
-      background: linear-gradient(135deg, #0d0a46 0%, #1a2260 40%, #243673 100%) !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-    .highlight, th, .card, .scenario, .track, .tag {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-    .demo-case { margin: 10px 0; }
-    .demo-case h4 { padding: 8px 14px 4px; font-size: 0.85rem; }
-    .demo-case p.demo-desc { padding: 0 14px 6px; font-size: 0.75rem; }
-    .demo-screenshots { grid-template-columns: 1fr 1.6fr; }
-    .demo-screenshots .chat-col,
-    .demo-screenshots .result-col {
-      max-height: none;
-      overflow: visible;
-      padding: 6px;
-    }
-    .demo-screenshots img { max-height: 300px; object-fit: contain; }
-    .screenshot-placeholder { padding: 20px; margin: 6px 0; }
-  }
 </style>
 </head>
 <body>
@@ -422,87 +333,78 @@
   <a href="#slide-1" title="Титульный"></a>
   <a href="#slide-2" title="Зачем"></a>
   <a href="#slide-3" title="Рынок"></a>
-  <a href="#slide-4" title="Calc"></a>
-  <a href="#slide-5" title="Writer"></a>
-  <a href="#slide-6" title="LLM vs код"></a>
-  <a href="#slide-7" title="Ограничения"></a>
-  <a href="#slide-8" title="РФ"></a>
-  <a href="#slide-9" title="Прототип"></a>
-  <a href="#slide-10" title="Конкуренты"></a>
-  <a href="#slide-11" title="Дорожная карта"></a>
-  <a href="#slide-12" title="Риски"></a>
+  <a href="#slide-4" title="Сценарии"></a>
+  <a href="#slide-5" title="РФ контекст"></a>
+  <a href="#slide-6" title="Прототип"></a>
+  <a href="#slide-7" title="Конкуренты"></a>
+  <a href="#slide-8" title="Риски"></a>
 </nav>
 
 <!-- Slide 1: Title -->
 <section class="slide slide-title" id="slide-1">
   <h1>ИИ-агенты в офисных продуктах Алми Партнер</h1>
-  <p class="subtitle">Возможности, ограничения, дорожная карта</p>
+  <p class="subtitle">Возможности, ограничения, следующие шаги</p>
 </section>
 
 <!-- Slide 2: Why -->
 <section class="slide" id="slide-2">
   <h2>Зачем это нужно</h2>
 
-  <p class="key-point">ИИ-ассистент в офисном пакете — уже стандарт рынка. Все крупные вендоры его внедрили.</p>
+  <p class="key-point">ИИ-ассистент в офисном пакете — стандарт рынка. Все крупные вендоры его внедрили.</p>
 
-  <div class="grid-2">
+  <div class="grid-2" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="card" style="border-top-color: #0078d4;">
       <h4>Microsoft Copilot</h4>
-      <p>Запущен в 2023. Более 1 млн платных лицензий.<br>Цена: <strong>$30/пользователь/мес</strong></p>
+      <p>Запущен в 2023. Более 1 млн платных лицензий.<br><strong>$30/пользователь/мес</strong></p>
     </div>
     <div class="card" style="border-top-color: #4285f4;">
-      <h4>Google Gemini в Workspace</h4>
-      <p>Запущен в 2024. Встроен в Docs, Sheets, Slides.<br>Цена: <strong>$20–30/пользователь/мес</strong></p>
+      <h4>Google Gemini</h4>
+      <p>Запущен в 2024. Встроен в Docs, Sheets, Slides.<br><strong>$20–30/пользователь/мес</strong></p>
     </div>
     <div class="card" style="border-top-color: #00b96b;">
-      <h4>WPS Office AI (Китай)</h4>
-      <p>500+ млн активных пользователей.<br>ИИ во всех приложениях пакета.</p>
-    </div>
-    <div class="card" style="border-top-color: #ff6a00;">
-      <h4>ByteDance, Alibaba, Tencent</h4>
-      <p>Все крупные китайские вендоры добавили ИИ-ассистентов в свои офисные продукты.</p>
+      <h4>WPS Office AI</h4>
+      <p>500+ млн активных пользователей.<br>ИИ во всех приложениях.</p>
     </div>
   </div>
 
   <h3>А в России?</h3>
   <div class="grid-2" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="card">
-      <h4 style="color: var(--red);">Microsoft Copilot</h4>
-      <p>Недоступен из-за санкций</p>
+      <h4 style="color: var(--red);">Microsoft / Google</h4>
+      <p>Недоступны из-за санкций</p>
     </div>
     <div class="card">
-      <h4 style="color: var(--yellow);">MyOffice</h4>
-      <p>Анонсировал ИИ-ассистент, но подробностей нет</p>
+      <h4 style="color: var(--green);">МойОфис</h4>
+      <p>Чат AI, Презентация AI, Голосовые заметки AI — 6 ИИ-продуктов</p>
     </div>
     <div class="card">
-      <h4 style="color: var(--text-dim);">Р7-Офис, AlterOffice</h4>
-      <p>ИИ-интеграции пока нет</p>
+      <h4 style="color: var(--green);">Р7-Офис</h4>
+      <p>Р7-Ассистент: корректура, перевод, выделение ключевых мыслей</p>
     </div>
   </div>
 
   <div class="highlight">
-    <p><strong>Первый российский офисный пакет с работающим ИИ-ассистентом получает конкурентное преимущество.</strong></p>
+    <p><strong>Российские конкуренты уже начали. Алми Партнер рискует остаться единственным офисным пакетом без ИИ-ассистента.</strong></p>
   </div>
 </section>
 
 <!-- Slide 3: Market -->
 <section class="slide" id="slide-3">
-  <h2>Что реально работает на рынке</h2>
+  <h2>Что реально работает на рынке и подтверждено внедрениями</h2>
 
-  <h3>Подтверждено внедрениями</h3>
   <div class="grid-2" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="card" style="border-top-color: var(--green);">
-      <h4>Черновики документов</h4>
+      <h4>Генерация черновиков документов</h4>
       <p>Vodafone, Accenture (160 тыс. лицензий)</p>
-      <p style="color: var(--green); font-weight: 600; font-size: 1.1rem;">4 часа → 30 минут</p>
+      <p style="color: var(--green); font-weight: 600; font-size: 1.1rem;">4 часа &rarr; 30 минут</p>
     </div>
     <div class="card" style="border-top-color: var(--green);">
-      <h4>Формулы из описания</h4>
+      <h4>Вывод формулы из описания задачи</h4>
       <p>Самая популярная функция Copilot в Excel</p>
       <p style="color: var(--green); font-weight: 600; font-size: 1.1rem;">+29% скорость работы</p>
     </div>
     <div class="card" style="border-top-color: var(--green);">
-      <h4>Вопросы по документам</h4>
+      <h4>Ответы на вопросы по документам</h4>
       <p>Harvey AI — 15 000 юристов</p>
       <p style="color: var(--green); font-weight: 600; font-size: 1.1rem;">Анализ контрактов</p>
     </div>
@@ -519,170 +421,84 @@
       <p>Результат посредственный у всех — Microsoft, Google, WPS. Индустрия пока не решила эту задачу</p>
     </div>
   </div>
-
-  <div class="highlight">
-    <p>Все успешные внедрения — это <strong>ИИ-ассистент, не автомат</strong>. Человек всегда проверяет результат.</p>
-  </div>
 </section>
 
-<!-- Slide 4: Calc scenarios -->
+<!-- Slide 4: Scenarios -->
 <section class="slide" id="slide-4">
-  <h2>Ключевые сценарии — таблицы (Calc)</h2>
-
-  <div class="scenario">
-    <h4>Сценарий 1: Разобраться в чужой таблице</h4>
-    <p>Сотрудник получил таблицу от коллеги или подрядчика — несколько листов, формулы, непонятные связи.</p>
-    <p class="user-msg">"Объясни, как устроена эта таблица: какие листы, откуда берутся данные, как считаются итоги"</p>
-    <p class="user-msg">"На листе 'Свод' ячейка G12 показывает 340 000 — покажи цепочку: откуда это число собирается"</p>
-    <p class="result">Агент читает структуру всех листов, находит зависимости между ними, объясняет логику на человеческом языке.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Сценарий 2: Помощь с формулами</h4>
-    <p>Пользователь знает что хочет посчитать, но не знает какой функцией.</p>
-    <p class="user-msg">"Посчитай среднюю выручку по филиалам, но без учёта тех, где выручка нулевая" → <code>=AVERAGEIF(B2:B20,"&lt;&gt;0")</code></p>
-    <p class="user-msg">"Для каждого сотрудника найди его последнюю продажу из таблицы на втором листе" → <code>=INDEX(...MATCH(...))</code></p>
-    <p class="result">Агент не просто пишет формулу — объясняет как она работает и записывает в ячейку.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Сценарий 3: Аудит и исправление ошибок</h4>
-    <p>Таблица используется давно, формулы редактировались разными людьми.</p>
-    <p class="user-msg">"Проверь формулы — нет ли ошибок или несогласованностей?"</p>
-    <p class="result">Агент находит: #REF! от удалённых строк, SUM-диапазон не захватывает новые строки, формула в одной ячейке отличается от паттерна столбца. <strong>Находит и предлагает исправление</strong> — применяет после подтверждения.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Сценарий 4: Подготовка шаблона с формулами</h4>
-    <p>Нужна таблица определённой структуры — готовый шаблон для регулярного использования.</p>
-    <p class="user-msg">"Сделай шаблон для учёта командировочных: дата, сотрудник, город, проживание, транспорт, суточные, итого. С формулами итогов по сотрудникам и общей суммой"</p>
-    <p class="result">Вход: описание структуры. Выход: .ods с формулами, форматированием, готовый к заполнению.</p>
-  </div>
-</section>
-
-<!-- Slide 5: Writer scenarios -->
-<section class="slide" id="slide-5">
-  <h2>Ключевые сценарии — документы (Writer)</h2>
-
-  <div class="scenario">
-    <h4>Сценарий 5: Аналитическая записка по данным</h4>
-    <p>Есть таблица с цифрами — нужен текстовый документ для руководства.</p>
-    <p class="user-msg">"По этим данным напиши аналитическую записку: ключевые показатели, тренды, на что обратить внимание"</p>
-    <p class="result"><strong>Вход:</strong> .ods с данными. <strong>Выход:</strong> .odt с заголовками, таблицей показателей, текстовыми выводами.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Сценарий 6: Перевод с сохранением структуры</h4>
-    <p class="user-msg">"Переведи на русский, сохрани форматирование"</p>
-    <p class="result"><strong>Вход:</strong> .odt на английском. <strong>Выход:</strong> .odt на русском, структура и стили сохранены. Обычный переводчик теряет форматирование.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Сценарий 7: Заполнение документа по данным</h4>
-    <p class="user-msg">"Заполни этот шаблон: контрагент ООО Альфа, сумма 1.5М, срок 12 мес, предмет — поставка серверного оборудования"</p>
-    <p class="result"><strong>Вход:</strong> шаблон + данные. <strong>Выход:</strong> документ с подставленными данными и адаптированными формулировками. LLM нужен, потому что формулировки адаптируются под контекст, а не просто подставляются.</p>
-  </div>
-
-  <h3>Веб-офис</h3>
-  <ul>
-    <li>Все те же сценарии, но в браузере с чат-панелью рядом с документом</li>
-    <li>Преимущество: работа с несколькими документами через единый API проще, чем на десктопе</li>
-  </ul>
-</section>
-
-<!-- Slide 6: LLM vs code -->
-<section class="slide" id="slide-6">
-  <h2>Что строить на LLM, а что — обычным кодом</h2>
-
-  <p>Для Алми как вендора важно разделять: какие фичи требуют LLM и дают конкурентное преимущество, а какие решаются традиционной разработкой.</p>
-
-  <h3>LLM — конкурентное преимущество</h3>
-  <table>
-    <tr><th>Возможность</th><th>Почему LLM</th><th>Что даёт вендору</th></tr>
-    <tr><td>Понять структуру чужой таблицы</td><td>Интерпретация, объяснение на ЕЯ</td><td>Ни один конкурент в РФ не умеет</td></tr>
-    <tr><td>Формула по описанию</td><td>Перевод с ЕЯ в язык формул</td><td>Снижает порог входа</td></tr>
-    <tr><td>Найти и объяснить ошибки</td><td>Понимание контекста и логики</td><td>Конкуренты не решили</td></tr>
-    <tr><td>Сгенерировать текст по данным</td><td>Основная сила LLM</td><td>Calc → Writer сценарий</td></tr>
-    <tr><td>Перевод с сохранением структуры</td><td>Перевод + понимание формата</td><td>Международные организации</td></tr>
-  </table>
-
-  <h3>Обычный код — дешевле и надёжнее</h3>
-  <table>
-    <tr><th>Возможность</th><th>Почему не LLM</th><th>Рекомендация</th></tr>
-    <tr><td>Массовая генерация однотипных документов</td><td>Фиксированный алгоритм</td><td>Mail merge / шаблонизатор</td></tr>
-    <tr><td>Применение стиля ГОСТ</td><td>Набор правил форматирования</td><td>Встроенные шаблоны</td></tr>
-    <tr><td>Конвертация форматов</td><td>Детерминированная операция</td><td>Утилита</td></tr>
-    <tr><td>Проверка орфографии</td><td>Есть готовые решения</td><td>Hunspell / LanguageTool</td></tr>
-  </table>
-
-  <div class="highlight">
-    <p><strong>Принцип:</strong> LLM — туда, где задача требует «понимания» естественного языка. Это конкурентный барьер. Детерминированные задачи — обычная разработка.</p>
-  </div>
-</section>
-
-<!-- Slide 7: Limitations -->
-<section class="slide" id="slide-7">
-  <h2>Ограничения LLM-агентов</h2>
+  <h2>Ключевые сценарии</h2>
 
   <div class="grid-2">
-    <div class="card">
-      <h4>LLM ошибаются в расчётах</h4>
-      <p>Модель предсказывает текст, а не вычисляет. Решение: агент делегирует вычисления формулам Calc. LLM генерирует формулу, Calc её исполняет.</p>
+    <div class="scenario">
+      <h4>Разобраться в чужой таблице</h4>
+      <p>Таблица с несколькими листами, формулами, непонятными связями.</p>
+      <p class="user-msg">"Объясни, как устроена эта таблица: какие листы, откуда берутся данные, как считаются итоги"</p>
+      <p class="result">Агент читает все листы, находит зависимости, объясняет логику.</p>
     </div>
-    <div class="card">
-      <h4>Галлюцинации</h4>
-      <p>LLM может выдумать данные, которых нет в источнике. Все сценарии с цифрами требуют проверки. Позиционирование: «ассистент готовит черновик, человек проверяет».</p>
+    <div class="scenario">
+      <h4>Вывод формулы из описания задачи</h4>
+      <p>Пользователь знает что хочет посчитать, но не знает какой функцией.</p>
+      <p class="user-msg">"Посчитай среднюю выручку без учёта нулевых" &rarr; <code>=AVERAGEIF(...,"&lt;&gt;0")</code></p>
+      <p class="result">Агент пишет формулу, объясняет как она работает, записывает в ячейку.</p>
     </div>
-    <div class="card">
-      <h4>Сложные документы</h4>
-      <p>Простые таблицы и документы генерируются надёжно. Многоуровневые кросс-ссылки, условное форматирование, макросы — непредсказуемо. Ограничение всей индустрии.</p>
+    <div class="scenario">
+      <h4>Аудит и исправление ошибок в формулах</h4>
+      <p>Таблица используется давно, редактировалась разными людьми.</p>
+      <p class="user-msg">"Проверь формулы — нет ли ошибок?"</p>
+      <p class="result">Агент находит #REF!, несогласованные диапазоны, отличия от паттерна столбца.</p>
     </div>
-    <div class="card">
-      <h4>Adoption</h4>
-      <p>20–30% лицензий Copilot у крупнейших клиентов неактивны. Пользователей нужно обучать. Начинать с простых сценариев с очевидной пользой.</p>
+    <div class="scenario">
+      <h4>Создание шаблона таблицы с формулами</h4>
+      <p>Нужна таблица определённой структуры для регулярного использования.</p>
+      <p class="user-msg">"Сделай шаблон учёта командировочных с формулами итогов"</p>
+      <p class="result">Вход: описание. Выход: .ods с формулами и форматированием.</p>
+    </div>
+    <div class="scenario">
+      <h4>Аналитическая записка по данным из таблицы</h4>
+      <p>Есть таблица с цифрами — нужен документ для руководства.</p>
+      <p class="user-msg">"Напиши записку: ключевые показатели, тренды, на что обратить внимание"</p>
+      <p class="result">Вход: .ods. Выход: .odt с таблицами и выводами.</p>
+    </div>
+    <div class="scenario">
+      <h4>Перевод документа с сохранением структуры</h4>
+      <p class="user-msg">"Переведи на русский, сохрани форматирование"</p>
+      <p class="result">Вход: .odt на английском. Выход: .odt на русском, стили сохранены.</p>
     </div>
   </div>
 </section>
 
-<!-- Slide 8: Russian context -->
-<section class="slide" id="slide-8">
-  <h2>Применение в российском контексте</h2>
+<!-- Slide 5: Russian context -->
+<section class="slide" id="slide-5">
+  <h2>Российский контекст</h2>
 
-  <div class="scenario">
-    <h4>Аналитик в бюджетном учреждении или компании</h4>
-    <p>Сводная таблица расходов по 12 подразделениям за год. Нужно понять где перерасход и подготовить записку.</p>
-    <p class="user-msg">"На листе 'Факт' данные расходов, на листе 'План' — плановые. Сравни, покажи где отклонение больше 10%, напиши записку с выводами"</p>
-    <p class="result">Агент: читает оба листа, находит расхождения, генерирует .odt с таблицей отклонений и текстовым анализом.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Финансист</h4>
-    <p>Готовит ежемесячный отчёт: одна структура, но данные новые каждый раз.</p>
-    <p class="user-msg">"Сделай шаблон: статья затрат, план, факт, отклонение абс., отклонение %, нарастающий итог, лимит, статус. Формулы для всех вычисляемых столбцов, итоги по группам"</p>
-    <p class="result">Агент: создаёт .ods с формулами, готовый к ежемесячному заполнению.</p>
-  </div>
-
-  <div class="scenario">
-    <h4>Новый сотрудник</h4>
-    <p>Получил таблицу которую вёл предшественник 3 года.</p>
-    <p class="user-msg">"Объясни структуру этого файла. Какие листы справочные, какие расчётные? Откуда берётся итоговая сумма на листе 'Свод'?"</p>
-    <p class="result">Агент: читает все листы, строит карту зависимостей, объясняет.</p>
+  <div class="grid-2">
+    <div class="scenario">
+      <h4>Аналитик в бюджетном учреждении</h4>
+      <p>Сводная таблица расходов по 12 подразделениям за год.</p>
+      <p class="user-msg">"Сравни факт и план, покажи где отклонение больше 10%, напиши записку с выводами"</p>
+      <p class="result">Агент читает листы, находит расхождения, генерирует .odt с анализом.</p>
+    </div>
+    <div class="scenario">
+      <h4>Новый сотрудник</h4>
+      <p>Получил таблицу которую вёл предшественник 3 года.</p>
+      <p class="user-msg">"Объясни структуру файла. Какие листы справочные, какие расчётные?"</p>
+      <p class="result">Агент строит карту зависимостей, объясняет.</p>
+    </div>
   </div>
 
   <h3>Суверенитет данных — ключевое преимущество</h3>
   <ul>
     <li>Данные не уходят за рубеж (Microsoft Copilot / Google Gemini — облако US)</li>
-    <li>Open-source модели (Qwen 3.5 235B/397B, Alibaba — уровень GPT-4o/Claude) можно развернуть на собственных серверах</li>
+    <li>Open-source модели (Qwen 3.5 397B, уровень GPT-4o/Claude) можно развернуть на собственных серверах</li>
     <li>Российские LLM (YandexGPT, GigaChat) поддерживают вызов инструментов, но пока уступают по качеству — требуется тестирование</li>
     <li>Соответствие ФЗ-152 о персональных данных</li>
   </ul>
 </section>
 
-<!-- Slide 9: Prototype -->
-<section class="slide" id="slide-9">
+<!-- Slide 6: Prototype -->
+<section class="slide" id="slide-6">
   <h2>Наш прототип</h2>
 
-  <p>Работающий прототип ИИ-агента для AlterOffice. Демонстрирует, что технология работает.</p>
+  <p>Работающий прототип ИИ-агента для офисного пакета. Демонстрирует, что технология работает.</p>
 
   <h3>Что реализовано</h3>
   <ul>
@@ -697,8 +513,8 @@
   <p><strong>Qwen 3.5 397B</strong> (Alibaba, open-source) — одна из сильнейших для работы с инструментами. Не зависит от западных облаков, доступна для развёртывания на собственных серверах.</p>
 
   <div class="demo-case">
-    <h4>Сценарий: разобраться в чужой таблице</h4>
-    <p class="demo-desc">Файл regional_sales_2025.ods — 5 листов, формулы между листами. Пользователь просит объяснить структуру.</p>
+    <h4>Разобраться в чужой таблице</h4>
+    <p class="demo-desc">Файл с 5 листами, формулы между листами. Пользователь просит объяснить структуру.</p>
     <div class="demo-screenshots">
       <div class="chat-col">
         <img src="cases%20for%20presentation/case%201/AlmiAgent-Dify%20(1).png" alt="Диалог с агентом — анализ структуры таблицы">
@@ -710,7 +526,7 @@
   </div>
 
   <div class="demo-case">
-    <h4>Сценарий: формула по описанию на естественном языке</h4>
+    <h4>Вывод формулы из описания на естественном языке</h4>
     <p class="demo-desc">Пользователь просит добавить столбец «Доля Москвы» в процентах. Агент сам находит нужные столбцы и пишет формулу.</p>
     <div class="demo-screenshots">
       <div class="chat-col">
@@ -721,8 +537,9 @@
       </div>
     </div>
   </div>
+
   <div class="demo-case">
-    <h4>Сценарий: аналитическая записка по данным из таблицы</h4>
+    <h4>Аналитическая записка по данным из таблицы</h4>
     <p class="demo-desc">Агент читает .ods с продажами по филиалам, анализирует выполнение плана, генерирует .odt с таблицами и выводами.</p>
     <div class="demo-screenshots">
       <div class="chat-col">
@@ -735,8 +552,8 @@
   </div>
 </section>
 
-<!-- Slide 10: Competitors -->
-<section class="slide" id="slide-10">
+<!-- Slide 7: Competitors -->
+<section class="slide" id="slide-7">
   <h2>Конкуренты</h2>
 
   <table>
@@ -744,39 +561,39 @@
       <th></th>
       <th>Microsoft Copilot</th>
       <th>Google Gemini</th>
-      <th>WPS AI</th>
-      <th>MyOffice</th>
-      <th>AlterOffice</th>
+      <th>МойОфис</th>
+      <th>Р7-Офис</th>
+      <th>Алми Партнер</th>
     </tr>
     <tr>
       <td>ИИ-ассистент</td>
-      <td><span class="tag tag-yes">Да, встроенный</span></td>
-      <td><span class="tag tag-yes">Да, встроенный</span></td>
-      <td><span class="tag tag-yes">Да, встроенный</span></td>
-      <td><span class="tag tag-partial">Анонс</span></td>
+      <td><span class="tag tag-yes">Встроенный</span></td>
+      <td><span class="tag tag-yes">Встроенный</span></td>
+      <td><span class="tag tag-yes">Чат AI, 6 продуктов</span></td>
+      <td><span class="tag tag-partial">Р7-Ассистент</span></td>
       <td><span class="tag tag-partial">Прототип</span></td>
     </tr>
     <tr>
       <td>Таблицы</td>
       <td><span class="tag tag-yes">Да</span></td>
       <td><span class="tag tag-yes">Да</span></td>
-      <td><span class="tag tag-yes">Да</span></td>
-      <td><span class="tag tag-unknown">?</span></td>
+      <td><span class="tag tag-partial">Анонс</span></td>
+      <td><span class="tag tag-partial">Анонс</span></td>
       <td><span class="tag tag-partial">Прототип</span></td>
     </tr>
     <tr>
       <td>Документы</td>
       <td><span class="tag tag-yes">Да</span></td>
       <td><span class="tag tag-yes">Да</span></td>
-      <td><span class="tag tag-yes">Да</span></td>
-      <td><span class="tag tag-unknown">?</span></td>
+      <td><span class="tag tag-partial">Базово</span></td>
+      <td><span class="tag tag-yes">Корректура, перевод</span></td>
       <td><span class="tag tag-partial">Прототип</span></td>
     </tr>
     <tr>
       <td>Доступен в России</td>
       <td><span class="tag tag-no">Нет</span></td>
       <td><span class="tag tag-no">Нет</span></td>
-      <td><span class="tag tag-no">Нет</span></td>
+      <td><span class="tag tag-yes">Да</span></td>
       <td><span class="tag tag-yes">Да</span></td>
       <td><span class="tag tag-yes">Да</span></td>
     </tr>
@@ -784,84 +601,36 @@
       <td>Суверенитет данных</td>
       <td><span class="tag tag-no">US cloud</span></td>
       <td><span class="tag tag-no">US cloud</span></td>
-      <td><span class="tag tag-no">CN cloud</span></td>
-      <td><span class="tag tag-unknown">?</span></td>
-      <td><span class="tag tag-yes">Да</span></td>
+      <td><span class="tag tag-yes">Свои серверы</span></td>
+      <td><span class="tag tag-yes">Свои серверы</span></td>
+      <td><span class="tag tag-yes">Свои серверы</span></td>
     </tr>
     <tr>
       <td>Open-source модели</td>
       <td><span class="tag tag-no">Нет</span></td>
       <td><span class="tag tag-no">Нет</span></td>
-      <td><span class="tag tag-no">Нет</span></td>
-      <td><span class="tag tag-unknown">?</span></td>
-      <td><span class="tag tag-yes">Да</span></td>
+      <td><span class="tag tag-partial">Не уточняют</span></td>
+      <td><span class="tag tag-yes">Выбор модели</span></td>
+      <td><span class="tag tag-yes">Qwen 3.5</span></td>
     </tr>
   </table>
 
   <div class="highlight">
-    <p>По функциональности глобальные конкуренты впереди — зрелые продукты с миллионами пользователей. Но <strong>ни один</strong> недоступен в России. Преимущество AlterOffice — не быть лучше Copilot, а быть <strong>первым работающим решением на российском рынке</strong>.</p>
+    <p>МойОфис и Р7-Офис уже выпустили ИИ-продукты. Глобальные конкуренты недоступны в России, но <strong>российские конкуренты активно двигаются</strong>. Преимущество Алми Партнер — глубокая интеграция в таблицы (формулы, аудит, кросс-листовой анализ), чего пока нет ни у кого.</p>
   </div>
 </section>
 
-<!-- Slide 11: Roadmap -->
-<section class="slide" id="slide-11">
-  <h2>Дорожная карта</h2>
-
-  <div class="track">
-    <h3>Трек 1: Покрытие API</h3>
-    <p>Агент управляет офисным пакетом через API. Больше покрытие = больше сценариев.</p>
-    <table>
-      <tr><th>Что есть</th><th>Что нужно</th><th>Какие сценарии открывает</th></tr>
-      <tr><td>Создание таблиц с формулами</td><td>Диаграммы и графики</td><td>Визуализация данных по запросу</td></tr>
-      <tr><td>Создание документов</td><td>Точечное редактирование</td><td>Обновление без пересоздания</td></tr>
-      <tr><td>Чтение файлов и структуры</td><td>Аудит формул</td><td>Понимание чужих таблиц, поиск ошибок</td></tr>
-      <tr><td>Выполнение Python/UNO</td><td>Шаблоны с плейсхолдерами</td><td>Заполнение типовых документов</td></tr>
-      <tr><td></td><td>Условное форматирование</td><td>Автоподсветка отклонений</td></tr>
-      <tr><td></td><td>Сводные таблицы</td><td>Агрегация больших данных</td></tr>
-    </table>
-  </div>
-
-  <div class="track">
-    <h3>Трек 2: Качество агента</h3>
-    <table>
-      <tr><th>Направление</th><th>Что даст</th></tr>
-      <tr><td>Верификация результата</td><td>Агент проверяет работу перед ответом</td></tr>
-      <tr><td>Формулы из ЕЯ</td><td>«Посчитай среднее без нулей» → AVERAGEIF</td></tr>
-      <tr><td>Обработка ошибок</td><td>Retry при сбое, а не падение</td></tr>
-      <tr><td>Поддержка моделей</td><td>Qwen, YandexGPT, GigaChat — гибкость</td></tr>
-    </table>
-  </div>
-
-  <div class="grid-2">
-    <div class="track">
-      <h3>Трек 3: Интеграция в продукт</h3>
-      <ul>
-        <li>Чат-панель в UI AlterOffice</li>
-        <li>Контекст текущего документа</li>
-        <li>Встроенные подсказки в ячейке</li>
-      </ul>
-    </div>
-    <div class="track">
-      <h3>Трек 4: Веб-офис</h3>
-      <ul>
-        <li>Агент в веб-редакторе</li>
-        <li>Кросс-документная работа через единый API</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Slide 12: Risks -->
-<section class="slide" id="slide-12">
+<!-- Slide 8: Risks -->
+<section class="slide" id="slide-8">
   <h2>Риски</h2>
 
   <table class="risk-table">
     <tr><th>Риск</th><th>Влияние</th><th>Как снизить</th></tr>
-    <tr><td>MyOffice выпустит ИИ раньше</td><td>Потеря преимущества первого</td><td>Работающий продукт &gt; анонс</td></tr>
+    <tr><td>МойОфис / Р7 уже впереди</td><td>Отставание нарастает</td><td>Фокус на глубоких сценариях (таблицы), а не на поверхностных (чат)</td></tr>
     <tr><td>Пользователи не будут использовать</td><td>Фича без adoption бесполезна</td><td>Фокус на реальных задачах, обучение</td></tr>
-    <tr><td>Галлюцинации в документах с цифрами</td><td>Ошибки в отчётах</td><td>Автоверификация, «ассистент»</td></tr>
-    <tr><td>Зависимость от облачных моделей</td><td>Доступность, суверенитет</td><td>Локальное развёртывание</td></tr>
-    <tr><td>Сложные документы генерируются плохо</td><td>Разочарование пользователей</td><td>Начинать с простых кейсов</td></tr>
+    <tr><td>Галлюцинации в документах с цифрами</td><td>Ошибки в отчётах</td><td>Автоверификация, позиционирование как «ассистент»</td></tr>
+    <tr><td>Зависимость от облачных моделей</td><td>Доступность, суверенитет</td><td>Локальное развёртывание open-source моделей</td></tr>
+    <tr><td>Сложные документы генерируются плохо</td><td>Разочарование пользователей</td><td>Начинать с простых сценариев с очевидной пользой</td></tr>
   </table>
 </section>
 
@@ -870,7 +639,6 @@
 </div>
 
 <script>
-// Highlight nav dots on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     const dot = document.querySelector(`.nav a[href="#${e.target.id}"]`);
@@ -879,7 +647,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.slide').forEach(s => observer.observe(s));
 
-// Lightbox
 const lb = document.getElementById('lightbox');
 const lbImg = lb.querySelector('img');
 document.querySelectorAll('.demo-screenshots img').forEach(img => {
