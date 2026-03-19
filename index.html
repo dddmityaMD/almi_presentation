@@ -22,6 +22,11 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
@@ -38,7 +43,28 @@
     border-bottom: none;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-snap-align: start;
   }
+
+  .slide > *, .slide-title > * {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .slide.visible > *, .slide-title.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide > *:nth-child(1) { transition-delay: 0s; }
+  .slide > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide > *:nth-child(3) { transition-delay: 0.24s; }
+  .slide > *:nth-child(4) { transition-delay: 0.36s; }
+  .slide > *:nth-child(5) { transition-delay: 0.48s; }
+  .slide > *:nth-child(6) { transition-delay: 0.6s; }
+  .slide > *:nth-child(7) { transition-delay: 0.72s; }
 
   .slide-title {
     min-height: 100vh;
@@ -50,6 +76,7 @@
     padding: 60px;
     background: linear-gradient(135deg, #0d0a46 0%, #1a2260 40%, #243673 100%);
     max-width: none;
+    scroll-snap-align: start;
   }
 
   h1 {
@@ -210,6 +237,14 @@
     margin-bottom: 12px;
     font-size: 1rem;
     font-weight: 700;
+  }
+
+  .content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 8px rgba(13,10,70,0.06);
   }
 
   .demo-case {
@@ -502,19 +537,21 @@
 <section class="slide" id="slide-6">
   <h2>Наш прототип</h2>
 
-  <p>Работающий прототип ИИ-агента для офисного пакета. Демонстрирует, что технология работает.</p>
+  <div class="content-card">
+    <p>Работающий прототип ИИ-агента для офисного пакета. Демонстрирует, что технология работает.</p>
 
-  <h3>Что реализовано</h3>
-  <ul>
-    <li>Создание таблиц (.ods) по описанию — с формулами, форматированием, итогами</li>
-    <li>Создание документов (.odt) — с заголовками, таблицами, списками</li>
-    <li>Чтение и анализ существующих файлов — агент отвечает на вопросы по данным</li>
-    <li>Перевод документов с сохранением структуры</li>
-    <li>Точечное редактирование — агент может изменить конкретную ячейку или формулу</li>
-  </ul>
+    <h3>Что реализовано</h3>
+    <ul>
+      <li>Создание таблиц (.ods) по описанию — с формулами, форматированием, итогами</li>
+      <li>Создание документов (.odt) — с заголовками, таблицами, списками</li>
+      <li>Чтение и анализ существующих файлов — агент отвечает на вопросы по данным</li>
+      <li>Перевод документов с сохранением структуры</li>
+      <li>Точечное редактирование — агент может изменить конкретную ячейку или формулу</li>
+    </ul>
 
-  <h3>Модель</h3>
-  <p><strong>Qwen 3.5 397B</strong> (Alibaba, open-source) — одна из сильнейших для работы с инструментами. Не зависит от западных облаков, доступна для развёртывания на собственных серверах.</p>
+    <h3>Модель</h3>
+    <p><strong>Qwen 3.5 397B</strong> (Alibaba, open-source) — одна из сильнейших для работы с инструментами. Не зависит от западных облаков, доступна для развёртывания на собственных серверах.</p>
+  </div>
 
   <div class="demo-case">
     <h4>Разобраться в чужой таблице</h4>
@@ -560,6 +597,7 @@
 <section class="slide" id="slide-7">
   <h2>Конкуренты</h2>
 
+  <div class="content-card" style="padding: 0; overflow: hidden;">
   <table>
     <tr>
       <th></th>
@@ -618,6 +656,7 @@
       <td><span class="tag tag-yes">Qwen 3.5</span></td>
     </tr>
   </table>
+  </div>
 
   <div class="highlight">
     <p>МойОфис и Р7-Офис уже выпустили ИИ-продукты. Глобальные конкуренты недоступны в России, но <strong>российские конкуренты активно двигаются</strong>. Преимуществом Алми Партнер может стать <strong>более глубокая интеграция ИИ</strong> — работа с формулами и аудит ошибок в таблицах, создание документов с нуля по описанию, аналитические записки — чего пока нет ни у кого.</p>
@@ -628,6 +667,7 @@
 <section class="slide" id="slide-8">
   <h2>Риски</h2>
 
+  <div class="content-card" style="padding: 0; overflow: hidden;">
   <table class="risk-table">
     <tr><th>Риск</th><th>Влияние</th><th>Как снизить</th></tr>
     <tr><td>МойОфис / Р7 уже впереди</td><td>Отставание нарастает</td><td>Фокус на глубоких сценариях (таблицы), а не на поверхностных (чат)</td></tr>
@@ -636,6 +676,7 @@
     <tr><td>Зависимость от облачных моделей</td><td>Доступность, суверенитет</td><td>Локальное развёртывание open-source моделей</td></tr>
     <tr><td>Сложные документы генерируются плохо</td><td>Разочарование пользователей</td><td>Начинать с простых сценариев с очевидной пользой</td></tr>
   </table>
+  </div>
 </section>
 
 <div class="lightbox" id="lightbox">
@@ -647,8 +688,13 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     const dot = document.querySelector(`.nav a[href="#${e.target.id}"]`);
     if (dot) dot.style.background = e.isIntersecting ? '#bf2e28' : '';
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    } else {
+      e.target.classList.remove('visible');
+    }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.slide').forEach(s => observer.observe(s));
 
 const lb = document.getElementById('lightbox');
